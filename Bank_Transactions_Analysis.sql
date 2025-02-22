@@ -88,8 +88,14 @@ AND transaction_date - prev_transaction_date <= 1;
 
 
 
-
-
+-- 6. Customer Segmentation (RFM)
+SELECT
+customer_id, 
+COUNT(transaction_id) AS frequency,
+AGE(CURRENT_DATE ,MAX(transaction_date)) AS recency, 
+SUM(amount) AS monetary 
+FROM transactions
+GROUP BY 1
 
 
 
